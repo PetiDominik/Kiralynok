@@ -1,6 +1,7 @@
 
 package main;
 
+import javax.swing.JButton;
 import model.Tabla;
 import view.GUIView;
 
@@ -21,6 +22,14 @@ public class Program {
         view.setVisible(true);
         
         view.megjelenit(tabla.megjelenit());
+        
+        JButton btnElhelyez = view.getBtnElhelyez();
+        
+        btnElhelyez.addActionListener((e) -> {
+            System.out.println("a");
+            tabla.elhelyez(view.getKiralynoCount());
+            view.megjelenit(tabla.megjelenit());
+        });
     }
     
 }

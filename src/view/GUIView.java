@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Dominik
@@ -16,6 +18,8 @@ public class GUIView extends javax.swing.JFrame {
     public GUIView() {
         initComponents();
         txtAElonezet.setLineWrap(true);
+        
+        slideKiralynoCount.setValue(8);
     }
 
     /**
@@ -30,8 +34,13 @@ public class GUIView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAElonezet = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        btnElhelyez = new javax.swing.JButton();
+        slideKiralynoCount = new javax.swing.JSlider();
+        spinKiralynoCount = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Királynők");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Előnézet"));
         jPanel1.setToolTipText("");
@@ -64,26 +73,95 @@ public class GUIView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Királynő elhelyezése"));
+        jPanel2.setToolTipText("");
+
+        btnElhelyez.setText("Elhelyez");
+
+        slideKiralynoCount.setMaximum(64);
+        slideKiralynoCount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                slideKiralynoCountStateChanged(evt);
+            }
+        });
+
+        spinKiralynoCount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinKiralynoCountStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnElhelyez, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(slideKiralynoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinKiralynoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(slideKiralynoCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinKiralynoCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnElhelyez)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void slideKiralynoCountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slideKiralynoCountStateChanged
+        int value = slideKiralynoCount.getValue();
+        spinKiralynoCount.setValue(value);
+    }//GEN-LAST:event_slideKiralynoCountStateChanged
+
+    private void spinKiralynoCountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinKiralynoCountStateChanged
+        int value = (int) spinKiralynoCount.getValue();
+        int max = slideKiralynoCount.getMaximum();
+        
+        if (value > max) {
+            value = 0;
+        } else if (value < 0) {
+            value = max;
+        }
+        spinKiralynoCount.setValue(value);
+        
+        slideKiralynoCount.setValue(value);
+    }//GEN-LAST:event_spinKiralynoCountStateChanged
 
     
     public void megjelenit(char[][] T) {
@@ -99,6 +177,15 @@ public class GUIView extends javax.swing.JFrame {
 
         txtAElonezet.setText(str);
     }
+    
+    public JButton getBtnElhelyez() {
+        return this.btnElhelyez;
+    }
+    
+    public int getKiralynoCount() {
+        return this.slideKiralynoCount.getValue();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -135,8 +222,12 @@ public class GUIView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnElhelyez;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSlider slideKiralynoCount;
+    private javax.swing.JSpinner spinKiralynoCount;
     private javax.swing.JTextArea txtAElonezet;
     // End of variables declaration//GEN-END:variables
 }
