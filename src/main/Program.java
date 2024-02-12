@@ -16,7 +16,7 @@ public class Program {
     }
     
     public void program() {
-        Tabla tabla = new Tabla('*');
+        Tabla tabla = new Tabla('#');
         
         GUIView view = new GUIView();
         view.setVisible(true);
@@ -26,9 +26,21 @@ public class Program {
         JButton btnElhelyez = view.getBtnElhelyez();
         
         btnElhelyez.addActionListener((e) -> {
-            System.out.println("a");
             tabla.elhelyez(view.getKiralynoCount());
             view.megjelenit(tabla.megjelenit());
+        });
+        
+        JButton btnSorOszlop = view.getBtnSorOszlop();
+        
+        btnSorOszlop.addActionListener((e) -> {
+            String vanTxt = "Van királynő";
+            String nincsTxt = "Nincs királynő";
+            
+            int sorVizsgal = view.getVizsgalSor();
+            int oszlopVizsgal = view.getVizsgalOszlop();
+
+            view.setVizslagSorEredmeny(tabla.uresSor(sorVizsgal) ? nincsTxt : vanTxt);
+            view.setVizslagOszlopEredmeny(tabla.uresOszlop(oszlopVizsgal) ? nincsTxt : vanTxt);
         });
     }
     

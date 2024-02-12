@@ -43,4 +43,26 @@ public class Tabla {
             }
         }
     }
+    
+    public boolean uresOszlop(int oszlop) {
+       int i = 0;
+       int hossz = this.T[0].length;
+       
+       while (i < hossz && this.T[i][oszlop] == this.uresCella) {
+           i++;
+       }
+       
+       return i == hossz;
+    }
+    
+    public boolean uresSor(int sor) {
+       int i = 0;
+       int hossz = this.T.length;
+       
+       while (i < hossz && this.T[sor][i] == this.uresCella) {
+           i++;
+       }
+       
+       return i == hossz;
+    }
 }
