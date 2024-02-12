@@ -25,11 +25,11 @@ public class Program {
     }
     
     public void program() {
-        if (Files.exists(path)) {
+        if (Files.exists(Path.of("tablak64.txt"))) {
             try {
                 Files.delete(Path.of("tablak64.txt"));
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(view, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
