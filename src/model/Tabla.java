@@ -20,6 +20,10 @@ public class Tabla {
                 this.T[i][j] = this.uresCella;
             }
         }
-       
+        
+    }
+    
+    public char[][] megjelenit() {
+        return this.T.clone();
     }
 }
