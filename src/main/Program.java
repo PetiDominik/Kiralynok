@@ -1,7 +1,16 @@
 
 package main;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import model.Tabla;
 import view.GUIView;
 
@@ -16,6 +25,14 @@ public class Program {
     }
     
     public void program() {
+        if (Files.exists(path)) {
+            try {
+                Files.delete(Path.of("tablak64.txt"));
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(view, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
         Tabla tabla = new Tabla('#');
         
         GUIView view = new GUIView();
@@ -48,6 +65,31 @@ public class Program {
         btnUresDb.addActionListener((e) -> {
             view.setSorDbEredmeny(Integer.toString(tabla.uresSorokSzama()));
             view.setOszlopDbEredmeny(Integer.toString(tabla.uresOszlopokSzama()));
+        });
+        
+        
+        JMenuItem mentMenu = view.getmenuItemFileMentes();
+        
+        mentMenu.addActionListener((e) -> {
+            
+            try {
+                Files.createFile(Path.of("tablak64.txt"));
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(view, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            for (int i = 1; i <= 64; i++) {
+                Tabla t = new Tabla('*');
+                t.elhelyez(i);
+                try {
+                    t.fajlbaIr();
+                } catch (IOException ex) {
+                    Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            JOptionPane.showMessageDialog(view, "File írása sikeresen megtörtént!", "Kész", JOptionPane.INFORMATION_MESSAGE);
+            
         });
     }
     

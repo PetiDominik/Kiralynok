@@ -1,6 +1,10 @@
 
 package model;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Random;
 
 
@@ -53,6 +57,23 @@ public class Tabla {
             
             this.T[x][y] = 'K';
         }
+    }
+    
+    public void fajlbaIr() throws IOException {
+        String str = "";
+        
+        for (char[] cs : T) {
+            for (char c : cs) {
+                str += "%c".formatted(c);
+            }
+            str += "\n";
+        }
+        str += "\n";
+        
+        Path path = Path.of("tablak64.txt");
+        byte[] bytes = str.getBytes();
+        
+        Files.write(path, bytes, StandardOpenOption.APPEND);
     }
     
     private void mezokInit() {

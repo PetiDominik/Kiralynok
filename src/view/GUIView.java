@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -55,6 +56,9 @@ public class GUIView extends javax.swing.JFrame {
         txtUresSorDb = new javax.swing.JTextField();
         txtUresOszlopDb = new javax.swing.JTextField();
         btnUresDb = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        menuItemFileMentes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Királynők");
@@ -274,6 +278,15 @@ public class GUIView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Üres DB", jPanel5);
 
+        jMenu2.setText("File");
+
+        menuItemFileMentes.setText("Ment");
+        jMenu2.add(menuItemFileMentes);
+
+        jMenuBar2.add(jMenu2);
+
+        setJMenuBar(jMenuBar2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -367,6 +380,10 @@ public class GUIView extends javax.swing.JFrame {
         return this.btnUresDb;
     }
     
+    public JMenuItem getmenuItemFileMentes() {
+        return this.menuItemFileMentes;
+    }
+    
     public int getKiralynoCount() {
         return this.slideKiralynoCount.getValue();
     }
@@ -439,6 +456,8 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -446,6 +465,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JMenuItem menuItemFileMentes;
     private javax.swing.JSlider slideKiralynoCount;
     private javax.swing.JSpinner spinKiralynoCount;
     private javax.swing.JSpinner spinOszlopUres;
