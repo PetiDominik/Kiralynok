@@ -22,6 +22,25 @@ public class Tabla {
         return this.T.clone();
     }
     
+    public int uresSorokSzama() {
+        int db = 0;
+        
+        for (int i = 0; i < this.T.length; i++) {
+            db += this.uresSor(i) ? 1 : 0;
+        }
+        
+        return db;
+    }
+    
+    public int uresOszlopokSzama() {
+        int db = 0;
+        
+        for (int i = 0; i < this.T[0].length; i++) {
+            db += this.uresOszlop(i) ? 1 : 0;
+        }
+        return db;
+    }
+    
     public void elhelyez(int N) {
         this.mezokInit();
         for (int i = 0; i < N; i++) {

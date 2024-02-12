@@ -49,6 +49,12 @@ public class GUIView extends javax.swing.JFrame {
         spinOszlopUres = new javax.swing.JSpinner();
         txtSorUresE = new javax.swing.JTextField();
         txtOszlopUresE = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtUresSorDb = new javax.swing.JTextField();
+        txtUresOszlopDb = new javax.swing.JTextField();
+        btnUresDb = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Királynők");
@@ -109,7 +115,7 @@ public class GUIView extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(slideKiralynoCount, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addComponent(slideKiralynoCount, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(spinKiralynoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -192,7 +198,7 @@ public class GUIView extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(spinOszlopUres, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtOszlopUresE, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                                .addComponent(txtOszlopUresE, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(spinSorUres, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -218,7 +224,55 @@ public class GUIView extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Üres sor / oszlop", jPanel3);
+        jTabbedPane1.addTab("Üres", jPanel3);
+
+        jLabel3.setText("sor");
+
+        jLabel4.setText("oszlop");
+
+        txtUresSorDb.setEditable(false);
+        txtUresSorDb.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        txtUresOszlopDb.setEditable(false);
+        txtUresOszlopDb.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        btnUresDb.setText("Számol");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUresDb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtUresSorDb, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(txtUresOszlopDb, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtUresSorDb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtUresOszlopDb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnUresDb)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Üres DB", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -309,6 +363,10 @@ public class GUIView extends javax.swing.JFrame {
         return this.btnSorOszlop;
     }
     
+    public JButton getBtnUresDb() {
+        return this.btnUresDb;
+    }
+    
     public int getKiralynoCount() {
         return this.slideKiralynoCount.getValue();
     }
@@ -327,6 +385,14 @@ public class GUIView extends javax.swing.JFrame {
     
     public void setVizslagOszlopEredmeny(String str) {
         this.txtOszlopUresE.setText(str);
+    }
+    
+    public void setSorDbEredmeny(String str) {
+        this.txtUresSorDb.setText(str);
+    }
+    
+    public void setOszlopDbEredmeny(String str) {
+        this.txtUresOszlopDb.setText(str);
     }
     
     /**
@@ -367,13 +433,17 @@ public class GUIView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnElhelyez;
     private javax.swing.JButton btnSorOszlop;
+    private javax.swing.JButton btnUresDb;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JSlider slideKiralynoCount;
@@ -383,5 +453,7 @@ public class GUIView extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAElonezet;
     private javax.swing.JTextField txtOszlopUresE;
     private javax.swing.JTextField txtSorUresE;
+    private javax.swing.JTextField txtUresOszlopDb;
+    private javax.swing.JTextField txtUresSorDb;
     // End of variables declaration//GEN-END:variables
 }

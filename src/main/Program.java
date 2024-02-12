@@ -42,6 +42,13 @@ public class Program {
             view.setVizslagSorEredmeny(tabla.uresSor(sorVizsgal) ? nincsTxt : vanTxt);
             view.setVizslagOszlopEredmeny(tabla.uresOszlop(oszlopVizsgal) ? nincsTxt : vanTxt);
         });
+        
+        JButton btnUresDb = view.getBtnUresDb();
+        
+        btnUresDb.addActionListener((e) -> {
+            view.setSorDbEredmeny(Integer.toString(tabla.uresSorokSzama()));
+            view.setOszlopDbEredmeny(Integer.toString(tabla.uresOszlopokSzama()));
+        });
     }
     
 }
